@@ -1,0 +1,133 @@
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+
+const Hero = () => {
+  const heroRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const buttonRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 50, scale: 0.9 },
+      { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power3.out' }
+    )
+      .fromTo(
+        subtitleRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+        '-=0.5'
+      )
+      .fromTo(
+        descriptionRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+        '-=0.5'
+      )
+      .fromTo(
+        buttonRef.current,
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' },
+        '-=0.3'
+      )
+      .fromTo(
+        imageRef.current,
+        { opacity: 0, scale: 1.2, rotation: -5 },
+        { opacity: 1, scale: 1, rotation: 0, duration: 1, ease: 'power3.out' },
+        '-=0.8'
+      );
+
+    // Floating animation for image
+    gsap.to(imageRef.current, {
+      y: -20,
+      duration: 2,
+      ease: 'power1.inOut',
+      repeat: -1,
+      yoyo: true,
+    });
+  }, []);
+
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      const offsetTop = element.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  return (
+    <section
+      id="home"
+      ref={heroRef}
+      className="section min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden"
+    >
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
+        <div className="absolute top-40 right-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-20 left-1/2 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="text-center md:text-left">
+            <h1
+              ref={titleRef}
+              className="text-5xl md:text-7xl font-bold mb-6 text-gradient"
+            >
+              Hi, I'm{' '}
+              <span className="text-blue-600">Muhammad Haroon Ahmad</span>
+            </h1>
+            <h2
+              ref={subtitleRef}
+              className="text-2xl md:text-3xl text-gray-700 mb-4 font-semibold"
+            >
+              Lecturer & Software Engineer
+            </h2>
+            <p
+              ref={descriptionRef}
+              className="text-lg text-gray-600 mb-8 leading-relaxed"
+            >
+              Passionate educator and software engineer specializing in Web Development, 
+              Mobile Applications, and Deep Learning. Author of digital courses and 
+              published researcher in AI and Software Engineering.
+            </p>
+            <button
+              ref={buttonRef}
+              onClick={scrollToContact}
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            >
+              Get In Touch
+            </button>
+          </div>
+          <div className="flex justify-center md:justify-end md:pr-8">
+            <div
+              ref={imageRef}
+              className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-white ring-4 ring-blue-200 relative"
+            >
+              <img
+                src="/haroon.jpg"
+                alt="Muhammad Haroon Ahmad"
+                className="w-full h-full object-cover object-center scale-110"
+                style={{
+                  objectPosition: 'center center',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
+

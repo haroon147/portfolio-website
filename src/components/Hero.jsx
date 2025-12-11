@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -10,46 +11,99 @@ const Hero = () => {
   const imageRef = useRef(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
     const tl = gsap.timeline();
 
+    // Split text animation for title - wait for ref to be ready
+    if (titleRef.current) {
+      const titleText = titleRef.current.textContent || '';
+      if (titleText) {
+        titleRef.current.innerHTML = titleText
+          .split(' ')
+          .map((word) => `<span style="display: inline-block;" class="title-word">${word}</span>`)
+          .join(' ');
+
+        const titleWords = titleRef.current.querySelectorAll('.title-word');
+        
+        if (titleWords.length > 0) {
+          // Animate title words with stagger
+          gsap.fromTo(
+            titleWords,
+            { opacity: 0, y: 50, rotationX: -90 },
+            {
+              opacity: 1,
+              y: 0,
+              rotationX: 0,
+              duration: 0.8,
+              ease: 'back.out(1.7)',
+              stagger: 0.1,
+            }
+          );
+        }
+      }
+    }
+
     tl.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 50, scale: 0.9 },
-      { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power3.out' }
+      subtitleRef.current,
+      { opacity: 0, y: 30, scale: 0.9 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'elastic.out(1, 0.5)' },
+      '-=0.3'
     )
       .fromTo(
-        subtitleRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
-        '-=0.5'
-      )
-      .fromTo(
         descriptionRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+        { opacity: 0, y: 30, clipPath: 'inset(0 100% 0 0)' },
+        { opacity: 1, y: 0, clipPath: 'inset(0 0% 0 0)', duration: 1, ease: 'power2.out' },
         '-=0.5'
       )
       .fromTo(
         buttonRef.current,
-        { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' },
+        { opacity: 0, scale: 0.8, rotation: -180 },
+        { opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: 'back.out(2)' },
         '-=0.3'
       )
       .fromTo(
         imageRef.current,
-        { opacity: 0, scale: 1.2, rotation: -5 },
-        { opacity: 1, scale: 1, rotation: 0, duration: 1, ease: 'power3.out' },
+        { opacity: 0, scale: 1.3, rotation: -15, x: 100 },
+        { opacity: 1, scale: 1, rotation: 0, x: 0, duration: 1.2, ease: 'power3.out' },
         '-=0.8'
       );
 
-    // Floating animation for image
-    gsap.to(imageRef.current, {
-      y: -20,
-      duration: 2,
-      ease: 'power1.inOut',
-      repeat: -1,
-      yoyo: true,
-    });
+    // Enhanced floating animation for image
+    if (imageRef.current) {
+      gsap.to(imageRef.current, {
+        y: -25,
+        rotation: 2,
+        duration: 3,
+        ease: 'power1.inOut',
+        repeat: -1,
+        yoyo: true,
+      });
+
+      // Parallax effect on scroll (only if element exists)
+      if (heroRef.current) {
+        gsap.to(imageRef.current, {
+          y: -50,
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        });
+      }
+    }
+
+    // Button pulse animation
+    if (buttonRef.current) {
+      gsap.to(buttonRef.current, {
+        scale: 1.05,
+        duration: 1.5,
+        ease: 'power1.inOut',
+        repeat: -1,
+        yoyo: true,
+      });
+    }
   }, []);
 
   const scrollToContact = () => {
@@ -83,8 +137,7 @@ const Hero = () => {
               ref={titleRef}
               className="text-5xl md:text-7xl font-bold mb-6 text-gradient"
             >
-              Hi, I'm{' '}
-              <span className="text-blue-600">Muhammad Haroon Ahmad</span>
+              Hi, I&apos;m Muhammad Haroon Ahmad
             </h1>
             <h2
               ref={subtitleRef}

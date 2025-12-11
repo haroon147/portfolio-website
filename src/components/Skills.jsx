@@ -29,22 +29,80 @@ const Skills = () => {
       if (skill) {
         gsap.fromTo(
           skill,
-          { opacity: 0, scale: 0.8, rotation: -10 },
+          { opacity: 0, scale: 0, rotation: -180, y: 50 },
           {
             opacity: 1,
             scale: 1,
             rotation: 0,
-            duration: 0.5,
-            ease: 'back.out(1.7)',
-            delay: index * 0.05,
+            y: 0,
+            duration: 0.6,
+            ease: 'elastic.out(1, 0.5)',
+            delay: index * 0.03,
             scrollTrigger: {
               trigger: skill,
               start: 'top 85%',
             },
           }
         );
+
+        // Hover animation for skill badges
+        const handleSkillEnter = () => {
+          gsap.to(skill, {
+            scale: 1.2,
+            rotation: 5,
+            y: -5,
+            duration: 0.3,
+            ease: 'back.out(1.7)',
+          });
+        };
+
+        const handleSkillLeave = () => {
+          gsap.to(skill, {
+            scale: 1,
+            rotation: 0,
+            y: 0,
+            duration: 0.3,
+            ease: 'power2.out',
+          });
+        };
+
+        skill.addEventListener('mouseenter', handleSkillEnter);
+        skill.addEventListener('mouseleave', handleSkillLeave);
+
+        // Continuous subtle bounce
+        gsap.to(skill, {
+          y: -3,
+          duration: 1.5,
+          ease: 'power1.inOut',
+          repeat: -1,
+          yoyo: true,
+          delay: index * 0.1,
+        });
       }
     });
+
+    // Animate category cards
+    if (sectionRef.current) {
+      const categoryCards = sectionRef.current.querySelectorAll('.bg-gradient-to-br');
+      if (categoryCards && categoryCards.length > 0) {
+        gsap.fromTo(
+          categoryCards,
+          { opacity: 0, y: 50, rotationX: -90 },
+          {
+            opacity: 1,
+            y: 0,
+            rotationX: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 80%',
+            },
+          }
+        );
+      }
+    }
   }, []);
 
   const skillCategories = [

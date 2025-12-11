@@ -26,17 +26,20 @@ const Education = () => {
       }
     );
 
-    // Animate cards
+    // Animate cards with enhanced effects
     cardsRef.current.forEach((card, index) => {
       if (card) {
+        const cardElements = card.querySelectorAll('h3, p, span, a');
+        
         gsap.fromTo(
           card,
-          { opacity: 0, x: -50, scale: 0.9 },
+          { opacity: 0, x: -100, rotationY: -45, scale: 0.8 },
           {
             opacity: 1,
             x: 0,
+            rotationY: 0,
             scale: 1,
-            duration: 0.8,
+            duration: 1,
             ease: 'power3.out',
             delay: index * 0.2,
             scrollTrigger: {
@@ -45,6 +48,53 @@ const Education = () => {
             },
           }
         );
+
+        // Stagger animation for card content
+        gsap.fromTo(
+          cardElements,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            delay: index * 0.2 + 0.3,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+            },
+          }
+        );
+
+        // Enhanced hover animation
+        const handleMouseEnter = () => {
+          gsap.to(card, {
+            y: -10,
+            rotationY: 5,
+            scale: 1.02,
+            duration: 0.4,
+            ease: 'power2.out',
+          });
+        };
+
+        const handleMouseLeave = () => {
+          gsap.to(card, {
+            y: 0,
+            rotationY: 0,
+            scale: 1,
+            duration: 0.4,
+            ease: 'power2.out',
+          });
+        };
+
+        card.addEventListener('mouseenter', handleMouseEnter);
+        card.addEventListener('mouseleave', handleMouseLeave);
+
+        // Cleanup function
+        return () => {
+          card.removeEventListener('mouseenter', handleMouseEnter);
+          card.removeEventListener('mouseleave', handleMouseLeave);
+        };
       }
     });
   }, []);

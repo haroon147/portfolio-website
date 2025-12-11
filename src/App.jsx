@@ -1,13 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Navbar';
+import LoadingScreen from './components/LoadingScreen';
+import ScrollProgress from './components/ScrollProgress';
 import Hero from './components/Hero';
 import Education from './components/Education';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Certifications from './components/Certifications';
-import Articles from './components/Articles';
 import Publications from './components/Publications';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -17,19 +18,33 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const appRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Global animations setup
     const ctx = gsap.context(() => {
-      // Fade in sections on scroll
-      gsap.utils.toArray('.section').forEach((section) => {
+      // Enhanced fade in sections on scroll with parallax
+      gsap.utils.toArray('.section').forEach((section, index) => {
+        // Parallax effect
+        gsap.to(section, {
+          y: index % 2 === 0 ? -30 : 30,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        });
+
+        // Fade in animation
         gsap.fromTo(
           section,
-          { opacity: 0, y: 50 },
+          { opacity: 0, y: 80, scale: 0.95 },
           {
             opacity: 1,
             y: 0,
-            duration: 1,
+            scale: 1,
+            duration: 1.2,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: section,
@@ -47,6 +62,8 @@ function App() {
 
   return (
     <div ref={appRef} className="App">
+      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+      <ScrollProgress />
       <Navbar />
       <Hero />
       <Education />

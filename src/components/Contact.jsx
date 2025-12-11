@@ -64,36 +64,62 @@ const Contact = () => {
           }
         );
 
-        // Hover animation
-        icon.addEventListener('mouseenter', () => {
+        // Enhanced hover animation with glow effect
+        const handleIconEnter = () => {
           gsap.to(icon, {
-            scale: 1.2,
+            scale: 1.3,
             rotation: 360,
-            duration: 0.4,
-            ease: 'power2.out',
+            y: -10,
+            duration: 0.5,
+            ease: 'back.out(1.7)',
           });
-        });
+          gsap.to(icon, {
+            boxShadow: '0 0 30px rgba(59, 130, 246, 0.6)',
+            duration: 0.3,
+          });
+        };
 
-        icon.addEventListener('mouseleave', () => {
+        const handleIconLeave = () => {
           gsap.to(icon, {
             scale: 1,
             rotation: 0,
-            duration: 0.4,
+            y: 0,
+            duration: 0.5,
             ease: 'power2.out',
           });
+          gsap.to(icon, {
+            boxShadow: '0 0 0px rgba(59, 130, 246, 0)',
+            duration: 0.3,
+          });
+        };
+
+        icon.addEventListener('mouseenter', handleIconEnter);
+        icon.addEventListener('mouseleave', handleIconLeave);
+
+        // Continuous subtle pulse
+        gsap.to(icon, {
+          scale: 1.05,
+          duration: 2,
+          ease: 'power1.inOut',
+          repeat: -1,
+          yoyo: true,
+          delay: index * 0.2,
         });
       }
     });
 
-    // Animate form
+    // Animate form with input field animations
     if (formRef.current) {
+      const formInputs = formRef.current.querySelectorAll('input, textarea, button');
+      
       gsap.fromTo(
         formRef.current,
-        { opacity: 0, x: -50 },
+        { opacity: 0, x: -100, rotationY: -30 },
         {
           opacity: 1,
           x: 0,
-          duration: 1,
+          rotationY: 0,
+          duration: 1.2,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: formRef.current,
@@ -101,6 +127,51 @@ const Contact = () => {
           },
         }
       );
+
+      // Stagger form inputs
+      gsap.fromTo(
+        formInputs,
+        { opacity: 0, y: 30, scale: 0.9 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: 'back.out(1.7)',
+          delay: 0.3,
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: 'top 85%',
+          },
+        }
+      );
+
+      // Input focus animations
+      if (formInputs && formInputs.length > 0) {
+        formInputs.forEach((input) => {
+          const handleFocus = () => {
+            gsap.to(input, {
+              scale: 1.02,
+              y: -2,
+              duration: 0.3,
+              ease: 'power2.out',
+            });
+          };
+
+          const handleBlur = () => {
+            gsap.to(input, {
+              scale: 1,
+              y: 0,
+              duration: 0.3,
+              ease: 'power2.out',
+            });
+          };
+
+          input.addEventListener('focus', handleFocus);
+          input.addEventListener('blur', handleBlur);
+        });
+      }
     }
   }, []);
 
@@ -164,7 +235,7 @@ const Contact = () => {
           ref={descriptionRef}
           className="text-xl text-center text-gray-300 mb-12 max-w-2xl mx-auto"
         >
-          I'm always open to discussing new projects, creative ideas, or
+          I&apos;m always open to discussing new projects, creative ideas, or
           opportunities to be part of your visions. Feel free to reach out!
         </p>
 

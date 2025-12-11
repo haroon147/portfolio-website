@@ -27,22 +27,69 @@ const Publications = () => {
 
     cardsRef.current.forEach((card, index) => {
       if (card) {
+        const cardContent = card.querySelectorAll('h3, p, span, a');
+        
+        // Card entrance with 3D effect
         gsap.fromTo(
           card,
-          { opacity: 0, x: 50, scale: 0.95 },
+          { opacity: 0, x: 100, rotationY: 45, scale: 0.8 },
           {
             opacity: 1,
             x: 0,
+            rotationY: 0,
             scale: 1,
-            duration: 0.8,
+            duration: 1,
             ease: 'power3.out',
-            delay: index * 0.15,
+            delay: index * 0.2,
             scrollTrigger: {
               trigger: card,
               start: 'top 85%',
             },
           }
         );
+
+        // Stagger content animation
+        gsap.fromTo(
+          cardContent,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            delay: index * 0.2 + 0.3,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+            },
+          }
+        );
+
+        // Enhanced hover effect
+        const handlePubEnter = () => {
+          gsap.to(card, {
+            y: -8,
+            rotationY: 5,
+            scale: 1.02,
+            boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+            duration: 0.4,
+            ease: 'power2.out',
+          });
+        };
+
+        const handlePubLeave = () => {
+          gsap.to(card, {
+            y: 0,
+            rotationY: 0,
+            scale: 1,
+            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+            duration: 0.4,
+            ease: 'power2.out',
+          });
+        };
+
+        card.addEventListener('mouseenter', handlePubEnter);
+        card.addEventListener('mouseleave', handlePubLeave);
       }
     });
   }, []);

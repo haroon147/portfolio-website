@@ -27,16 +27,22 @@ const Projects = () => {
 
     cardsRef.current.forEach((card, index) => {
       if (card) {
+        const techTags = card.querySelectorAll('span');
+        const buttons = card.querySelectorAll('a');
+        const emoji = card.querySelector('.text-6xl');
+
+        // Card entrance animation
         gsap.fromTo(
           card,
-          { opacity: 0, y: 80, rotationY: 15 },
+          { opacity: 0, y: 100, rotationX: 90, scale: 0.5 },
           {
             opacity: 1,
             y: 0,
-            rotationY: 0,
+            rotationX: 0,
+            scale: 1,
             duration: 1,
-            ease: 'power3.out',
-            delay: index * 0.2,
+            ease: 'back.out(1.7)',
+            delay: index * 0.15,
             scrollTrigger: {
               trigger: card,
               start: 'top 85%',
@@ -44,24 +50,111 @@ const Projects = () => {
           }
         );
 
-        // Hover animation
-        card.addEventListener('mouseenter', () => {
+        // Emoji animation
+        if (emoji) {
+          gsap.fromTo(
+            emoji,
+            { scale: 0, rotation: -180 },
+            {
+              scale: 1,
+              rotation: 0,
+              duration: 0.8,
+              ease: 'elastic.out(1, 0.5)',
+              delay: index * 0.15 + 0.3,
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 85%',
+              },
+            }
+          );
+
+          // Continuous emoji animation
+          gsap.to(emoji, {
+            rotation: 360,
+            duration: 20,
+            ease: 'none',
+            repeat: -1,
+          });
+        }
+
+        // Stagger tech tags animation
+        gsap.fromTo(
+          techTags,
+          { opacity: 0, scale: 0, rotation: -180 },
+          {
+            opacity: 1,
+            scale: 1,
+            rotation: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: 'back.out(1.7)',
+            delay: index * 0.15 + 0.5,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+            },
+          }
+        );
+
+        // Button animation
+        gsap.fromTo(
+          buttons,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            delay: index * 0.15 + 0.7,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+            },
+          }
+        );
+
+        // Enhanced hover animation
+        const handleCardEnter = () => {
           gsap.to(card, {
-            scale: 1.05,
-            y: -10,
-            duration: 0.3,
+            scale: 1.08,
+            y: -15,
+            rotationY: 10,
+            rotationX: -5,
+            z: 50,
+            duration: 0.4,
             ease: 'power2.out',
           });
-        });
+          if (emoji) {
+            gsap.to(emoji, {
+              scale: 1.3,
+              rotation: '+=30',
+              duration: 0.4,
+              ease: 'power2.out',
+            });
+          }
+        };
 
-        card.addEventListener('mouseleave', () => {
+        const handleCardLeave = () => {
           gsap.to(card, {
             scale: 1,
             y: 0,
-            duration: 0.3,
+            rotationY: 0,
+            rotationX: 0,
+            z: 0,
+            duration: 0.4,
             ease: 'power2.out',
           });
-        });
+          if (emoji) {
+            gsap.to(emoji, {
+              scale: 1,
+              duration: 0.4,
+              ease: 'power2.out',
+            });
+          }
+        };
+
+        card.addEventListener('mouseenter', handleCardEnter);
+        card.addEventListener('mouseleave', handleCardLeave);
       }
     });
   }, []);

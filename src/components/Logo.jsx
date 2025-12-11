@@ -14,17 +14,24 @@ const Logo = () => {
   }, []);
 
   return (
-    <div ref={logoRef} className="flex items-center gap-2 cursor-pointer" onClick={() => {
+    <div ref={logoRef} className="flex items-center gap-3 cursor-pointer" onClick={() => {
       const element = document.getElementById('home');
       if (element) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }}>
       <div className="relative">
-        <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center shadow-lg transform hover:rotate-12 transition-transform duration-300">
-          <span className="text-white font-bold text-xl">M</span>
+        <div className="w-12 h-12 rounded-lg overflow-hidden border-2 border-cyan-500/50 shadow-lg transform hover:rotate-12 hover:scale-110 transition-all duration-300">
+          <img
+            src={`${import.meta.env.BASE_URL}haroon.jpg`}
+            alt="MHA Solutions Logo"
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.src = '/haroon.jpg';
+            }}
+          />
         </div>
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full animate-pulse"></div>
+        <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full animate-pulse border-2 border-gray-900"></div>
       </div>
       <div className="flex flex-col">
         <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent leading-tight">

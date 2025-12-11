@@ -167,11 +167,15 @@ const Hero = () => {
               className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-cyan-500/50 ring-4 ring-cyan-500/30 relative"
             >
               <img
-                src="/haroon.jpg"
+                src={`${import.meta.env.BASE_URL}haroon.jpg`}
                 alt="Muhammad Haroon Ahmad"
                 className="w-full h-full object-cover object-center scale-110"
                 style={{
                   objectPosition: 'center center',
+                }}
+                onError={(e) => {
+                  console.error('Image failed to load:', e.target.src);
+                  e.target.src = '/haroon.jpg';
                 }}
               />
             </div>

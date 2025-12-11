@@ -126,7 +126,7 @@ const Education = () => {
     <section
       id="education"
       ref={sectionRef}
-      className="section bg-white py-20"
+      className="section bg-gray-900 py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
@@ -140,33 +140,33 @@ const Education = () => {
             <div
               key={index}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-l-4 border-blue-600"
+              className="bg-gradient-to-r from-gray-800 to-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-l-4 border-cyan-500"
             >
               <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                  <h3 className="text-2xl font-bold text-white mb-2">
                     {edu.degree}
                   </h3>
-                  <p className="text-xl text-blue-600 font-semibold mb-2">
+                  <p className="text-xl text-cyan-400 font-semibold mb-2">
                     {edu.institution}
                   </p>
-                  <p className="text-gray-500 text-sm mb-2">{edu.location}</p>
-                  <p className="text-gray-600 mb-2">{edu.description}</p>
+                  <p className="text-gray-400 text-sm mb-2">{edu.location}</p>
+                  <p className="text-gray-300 mb-2">{edu.description}</p>
                   {edu.website && (
                     <a
                       href={edu.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800 text-sm"
+                      className="text-cyan-400 hover:text-cyan-300 text-sm"
                     >
                       Visit University Website →
                     </a>
                   )}
                 </div>
                 <div className="mt-4 md:mt-0 md:ml-6 text-right">
-                  <p className="text-gray-500 text-sm mb-2">{edu.year}</p>
+                  <p className="text-gray-400 text-sm mb-2">{edu.year}</p>
                   {edu.gpa !== 'N/A' && (
-                    <span className="inline-block px-4 py-2 bg-blue-600 text-white rounded-full font-semibold">
+                    <span className="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full font-semibold">
                       GPA: {edu.gpa}
                     </span>
                   )}

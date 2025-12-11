@@ -21,16 +21,16 @@ const Logo = () => {
       }
     }}>
       <div className="relative">
-        <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg transform hover:rotate-12 transition-transform duration-300">
+        <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center shadow-lg transform hover:rotate-12 transition-transform duration-300">
           <span className="text-white font-bold text-xl">M</span>
         </div>
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full animate-pulse"></div>
+        <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full animate-pulse"></div>
       </div>
       <div className="flex flex-col">
-        <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight">
+        <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent leading-tight">
           MHA
         </span>
-        <span className="text-xs font-semibold text-gray-600 leading-tight -mt-1">
+        <span className="text-xs font-semibold text-gray-400 leading-tight -mt-1">
           Solutions
         </span>
       </div>

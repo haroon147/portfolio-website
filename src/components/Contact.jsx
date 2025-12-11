@@ -222,7 +222,7 @@ const Contact = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="section bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-20"
+      className="section bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
@@ -233,7 +233,7 @@ const Contact = () => {
         </h2>
         <p
           ref={descriptionRef}
-          className="text-xl text-center text-gray-300 mb-12 max-w-2xl mx-auto"
+          className="text-xl text-center text-gray-400 mb-12 max-w-2xl mx-auto"
         >
           I&apos;m always open to discussing new projects, creative ideas, or
           opportunities to be part of your visions. Feel free to reach out!
@@ -242,7 +242,7 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Social Media Links */}
           <div>
-            <h3 className="text-2xl font-bold mb-8 text-center md:text-left">
+            <h3 className="text-2xl font-bold mb-8 text-center md:text-left text-white">
               Connect With Me
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -263,48 +263,48 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div ref={formRef} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-xl">
-            <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
+          <div ref={formRef} className="bg-gray-800/50 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-gray-700">
+            <h3 className="text-2xl font-bold mb-6 text-white">Send Me a Message</h3>
             <form className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-semibold mb-2">
+                <label htmlFor="name" className="block text-sm font-semibold mb-2 text-gray-300">
                   Name
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-900/50 border border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                   placeholder="Your Name"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold mb-2">
+                <label htmlFor="email" className="block text-sm font-semibold mb-2 text-gray-300">
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-900/50 border border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                   placeholder="your.email@example.com"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold mb-2">
+                <label htmlFor="message" className="block text-sm font-semibold mb-2 text-gray-300">
                   Message
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   rows="5"
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-900/50 border border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent resize-none"
                   placeholder="Your message here..."
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                className="w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover:from-cyan-400 hover:to-blue-400 transform hover:scale-105 transition-all duration-300"
               >
                 Send Message
               </button>
@@ -314,26 +314,26 @@ const Contact = () => {
 
         {/* Contact Info */}
         <div className="mt-12 grid md:grid-cols-2 gap-6 text-center">
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
-            <p className="text-gray-300 mb-2">Email</p>
-            <a href="mailto:147haroon@gmail.com" className="text-white hover:text-blue-400 transition-colors">
+          <div className="bg-gray-800/50 backdrop-blur-md rounded-xl p-6 border border-gray-700">
+            <p className="text-gray-400 mb-2">Email</p>
+            <a href="mailto:147haroon@gmail.com" className="text-cyan-400 hover:text-cyan-300 transition-colors">
               147haroon@gmail.com
             </a>
           </div>
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
-            <p className="text-gray-300 mb-2">Phone</p>
-            <a href="tel:+923345246147" className="text-white hover:text-blue-400 transition-colors">
+          <div className="bg-gray-800/50 backdrop-blur-md rounded-xl p-6 border border-gray-700">
+            <p className="text-gray-400 mb-2">Phone</p>
+            <a href="tel:+923345246147" className="text-cyan-400 hover:text-cyan-300 transition-colors">
               (+92) 3345246147
             </a>
           </div>
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 md:col-span-2">
-            <p className="text-gray-300 mb-2">Address</p>
+          <div className="bg-gray-800/50 backdrop-blur-md rounded-xl p-6 md:col-span-2 border border-gray-700">
+            <p className="text-gray-400 mb-2">Address</p>
             <p className="text-white">Lahore, Pakistan</p>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="mt-16 text-center text-gray-400">
+        <div className="mt-16 text-center text-gray-500">
           <p>© 2024 Muhammad Haroon Ahmad. All rights reserved.</p>
         </div>
       </div>

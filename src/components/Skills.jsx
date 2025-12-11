@@ -136,7 +136,7 @@ const Skills = () => {
     <section
       id="skills"
       ref={sectionRef}
-      className="section bg-white py-20"
+      className="section bg-gray-900 py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
@@ -149,9 +149,9 @@ const Skills = () => {
           {skillCategories.map((category, catIndex) => (
             <div
               key={catIndex}
-              className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700"
             >
-              <h3 className="text-xl font-bold text-gray-800 mb-4">
+              <h3 className="text-xl font-bold text-white mb-4">
                 {category.category}
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -165,7 +165,7 @@ const Skills = () => {
                           skillRefs.current[totalIndex] = el;
                         }
                       }}
-                      className="px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors"
+                      className="px-3 py-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full text-sm font-semibold hover:from-cyan-400 hover:to-blue-400 transition-colors"
                     >
                       {skill}
                     </span>

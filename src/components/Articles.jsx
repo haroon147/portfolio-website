@@ -90,7 +90,7 @@ const Articles = () => {
     <section
       id="articles"
       ref={sectionRef}
-      className="section bg-gradient-to-br from-purple-50 to-blue-50 py-20"
+      className="section bg-gradient-to-br from-gray-800 to-gray-900 py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
@@ -104,25 +104,25 @@ const Articles = () => {
             <div
               key={index}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group"
+              className="bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group border border-gray-700"
             >
               <div className="flex items-start justify-between mb-4">
-                <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">
+                <span className="px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-300 border border-cyan-500/30 rounded-full text-sm font-semibold">
                   {article.category}
                 </span>
-                <span className="text-gray-500 text-sm">{article.date}</span>
+                <span className="text-gray-400 text-sm">{article.date}</span>
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
+              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
                 {article.title}
               </h3>
-              <p className="text-gray-600 mb-4">{article.description}</p>
+              <p className="text-gray-300 mb-4">{article.description}</p>
               <div className="flex items-center justify-between">
-                <p className="text-blue-600 font-semibold">
+                <p className="text-cyan-400 font-semibold">
                   {article.publication}
                 </p>
                 <a
                   href={article.link}
-                  className="text-blue-600 hover:text-purple-600 font-semibold flex items-center gap-2"
+                  className="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-2"
                 >
                   Read More
                   <svg

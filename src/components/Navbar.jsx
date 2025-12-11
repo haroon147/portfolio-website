@@ -52,7 +52,7 @@ const Navbar = () => {
       ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
+          ? 'bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-800'
           : 'bg-transparent'
       }`}
     >
@@ -64,7 +64,7 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+                className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium"
                 style={{
                   animationDelay: `${index * 0.1}s`,
                 }}
@@ -76,7 +76,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+              className="text-gray-300 hover:text-cyan-400 transition-colors"
             >
               {isMobileMenuOpen ? (
                 <svg
@@ -112,7 +112,7 @@ const Navbar = () => {
         </div>
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 bg-white/95 backdrop-blur-md">
+          <div className="md:hidden border-t border-gray-800 bg-gray-900/95 backdrop-blur-md">
             <div className="px-4 py-4 space-y-2">
               {navItems.map((item) => (
                 <button
@@ -121,7 +121,7 @@ const Navbar = () => {
                     scrollToSection(item.id);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="block w-full text-left px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-300 font-medium"
+                  className="block w-full text-left px-4 py-2 text-gray-300 hover:text-cyan-400 hover:bg-gray-800 rounded-lg transition-colors duration-300 font-medium"
                 >
                   {item.label}
                 </button>

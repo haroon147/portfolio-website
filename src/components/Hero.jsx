@@ -121,13 +121,13 @@ const Hero = () => {
     <section
       id="home"
       ref={heroRef}
-      className="section min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden"
+      className="section min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
-        <div className="absolute top-40 right-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-20 left-1/2 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
+        <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-500/20 rounded-full mix-blend-screen filter blur-xl opacity-40 animate-blob"></div>
+        <div className="absolute top-40 right-20 w-72 h-72 bg-purple-500/20 rounded-full mix-blend-screen filter blur-xl opacity-40 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-20 left-1/2 w-72 h-72 bg-blue-500/20 rounded-full mix-blend-screen filter blur-xl opacity-40 animate-blob animation-delay-4000"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -141,13 +141,13 @@ const Hero = () => {
             </h1>
             <h2
               ref={subtitleRef}
-              className="text-2xl md:text-3xl text-gray-700 mb-4 font-semibold"
+              className="text-2xl md:text-3xl text-cyan-400 mb-4 font-semibold"
             >
               Lecturer & Software Engineer
             </h2>
             <p
               ref={descriptionRef}
-              className="text-lg text-gray-600 mb-8 leading-relaxed"
+              className="text-lg text-gray-300 mb-8 leading-relaxed"
             >
               Passionate educator and software engineer specializing in Web Development, 
               Mobile Applications, and Deep Learning. Author of digital courses and 
@@ -164,7 +164,7 @@ const Hero = () => {
           <div className="flex justify-center md:justify-end md:pr-8">
             <div
               ref={imageRef}
-              className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-white ring-4 ring-blue-200 relative"
+              className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-cyan-500/50 ring-4 ring-cyan-500/30 relative"
             >
               <img
                 src="/haroon.jpg"

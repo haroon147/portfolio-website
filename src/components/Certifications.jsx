@@ -89,7 +89,7 @@ const Certifications = () => {
     <section
       id="certifications"
       ref={sectionRef}
-      className="section bg-gradient-to-br from-indigo-50 to-purple-50 py-20"
+      className="section bg-gradient-to-br from-gray-800 to-gray-900 py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
@@ -101,7 +101,7 @@ const Certifications = () => {
         
         {/* Certifications */}
         <div className="mb-12">
-          <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">
             Certifications
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
@@ -109,22 +109,22 @@ const Certifications = () => {
               <div
                 key={index}
                 ref={(el) => (cardsRef.current[index] = el)}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-indigo-600"
+                className="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-cyan-500"
               >
-                <h4 className="text-xl font-bold text-gray-800 mb-2">
+                <h4 className="text-xl font-bold text-white mb-2">
                   {cert.title}
                 </h4>
-                <p className="text-indigo-600 font-semibold mb-2">
+                <p className="text-cyan-400 font-semibold mb-2">
                   {cert.issuer}
                 </p>
-                <p className="text-gray-600 mb-3">{cert.description}</p>
+                <p className="text-gray-300 mb-3">{cert.description}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 text-sm">{cert.date}</span>
+                  <span className="text-gray-400 text-sm">{cert.date}</span>
                   <a
                     href={cert.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-indigo-600 hover:text-indigo-800 font-semibold inline-flex items-center gap-2"
+                    className="text-cyan-400 hover:text-cyan-300 font-semibold inline-flex items-center gap-2"
                   >
                     View Certificate
                     <svg
@@ -149,7 +149,7 @@ const Certifications = () => {
 
         {/* Internships */}
         <div>
-          <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">
             Internships
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
@@ -157,16 +157,16 @@ const Certifications = () => {
               <div
                 key={index}
                 ref={(el) => (cardsRef.current[certifications.length + index] = el)}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-purple-600"
+                className="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-purple-500"
               >
-                <h4 className="text-lg font-bold text-gray-800 mb-2">
+                <h4 className="text-lg font-bold text-white mb-2">
                   {internship.title}
                 </h4>
-                <p className="text-purple-600 font-semibold mb-2">
+                <p className="text-purple-400 font-semibold mb-2">
                   {internship.company}
                 </p>
-                <p className="text-gray-600 mb-3">{internship.description}</p>
-                <span className="text-gray-500 text-sm">{internship.period}</span>
+                <p className="text-gray-300 mb-3">{internship.description}</p>
+                <span className="text-gray-400 text-sm">{internship.period}</span>
               </div>
             ))}
           </div>

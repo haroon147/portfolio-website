@@ -145,7 +145,7 @@ const Publications = () => {
     <section
       id="publications"
       ref={sectionRef}
-      className="section bg-white py-20"
+      className="section bg-gray-900 py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
@@ -159,34 +159,34 @@ const Publications = () => {
             <div
               key={index}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-indigo-600"
+              className="bg-gradient-to-r from-gray-800 to-gray-700 rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-cyan-500"
             >
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">
+              <h3 className="text-2xl font-bold text-white mb-3">
                 {pub.title}
               </h3>
-              <p className="text-gray-700 mb-2">
-                <span className="font-semibold">Authors:</span> {pub.authors}
+              <p className="text-gray-300 mb-2">
+                <span className="font-semibold text-cyan-400">Authors:</span> <span className="text-gray-300">{pub.authors}</span>
               </p>
-              <p className="text-gray-700 mb-2">
-                <span className="font-semibold">Journal:</span> {pub.journal}
+              <p className="text-gray-300 mb-2">
+                <span className="font-semibold text-cyan-400">Journal:</span> <span className="text-gray-300">{pub.journal}</span>
               </p>
               {pub.volume && (
-                <p className="text-gray-700 mb-2">
-                  <span className="font-semibold">Volume:</span> {pub.volume}
+                <p className="text-gray-300 mb-2">
+                  <span className="font-semibold text-cyan-400">Volume:</span> <span className="text-gray-300">{pub.volume}</span>
                 </p>
               )}
-              <p className="text-gray-700 mb-2">
-                <span className="font-semibold">Publisher:</span> {pub.publisher}
+              <p className="text-gray-300 mb-2">
+                <span className="font-semibold text-cyan-400">Publisher:</span> <span className="text-gray-300">{pub.publisher}</span>
               </p>
               <div className="flex flex-wrap items-center gap-4 mb-3">
-                <span className="px-3 py-1 bg-indigo-600 text-white rounded-full text-sm font-semibold">
+                <span className="px-3 py-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full text-sm font-semibold">
                   {pub.year}
                 </span>
               </div>
-              <p className="text-gray-600 mb-4">{pub.description}</p>
+              <p className="text-gray-400 mb-4">{pub.description}</p>
               <a
                 href={pub.link}
-                className="text-indigo-600 hover:text-indigo-800 font-semibold inline-flex items-center gap-2"
+                className="text-cyan-400 hover:text-cyan-300 font-semibold inline-flex items-center gap-2"
               >
                 View Publication
                 <svg

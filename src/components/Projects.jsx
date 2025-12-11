@@ -220,7 +220,7 @@ const Projects = () => {
     <section
       id="projects"
       ref={sectionRef}
-      className="section bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-20"
+      className="section bg-gradient-to-br from-gray-900 via-gray-800 to-black py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
@@ -234,18 +234,18 @@ const Projects = () => {
             <div
               key={index}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+              className="bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-700"
             >
               <div className="text-6xl mb-4 text-center">{project.image}</div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">
+              <h3 className="text-2xl font-bold text-white mb-3">
                 {project.title}
               </h3>
-              <p className="text-gray-600 mb-4">{project.description}</p>
+              <p className="text-gray-300 mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.technologies.map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold"
+                    className="px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-300 border border-cyan-500/30 rounded-full text-sm font-semibold"
                   >
                     {tech}
                   </span>
@@ -254,13 +254,13 @@ const Projects = () => {
               <div className="flex gap-4">
                 <a
                   href={project.link}
-                  className="flex-1 text-center px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                  className="flex-1 text-center px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold hover:from-cyan-400 hover:to-blue-400 hover:shadow-lg transition-all duration-300"
                 >
                   Live Demo
                 </a>
                 <a
                   href={project.github}
-                  className="flex-1 text-center px-4 py-2 bg-gray-800 text-white rounded-lg font-semibold hover:bg-gray-900 transition-all duration-300"
+                  className="flex-1 text-center px-4 py-2 bg-gray-700 text-white rounded-lg font-semibold hover:bg-gray-600 transition-all duration-300"
                 >
                   GitHub
                 </a>

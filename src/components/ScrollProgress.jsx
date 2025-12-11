@@ -22,10 +22,10 @@ const ScrollProgress = () => {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200 z-[100]">
+    <div className="fixed top-0 left-0 right-0 h-1 bg-gray-800 z-[100]">
       <div
         ref={progressRef}
-        className="h-full bg-gradient-to-r from-blue-600 to-purple-600 origin-left"
+        className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 origin-left"
         style={{ transform: 'scaleX(0)' }}
       />
     </div>
